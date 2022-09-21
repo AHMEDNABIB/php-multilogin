@@ -4,10 +4,10 @@
 
   if (isset($_POST['submit'])) {
 
-     $name = mysqli_real_escape_string($conn,$_POST['name']);
-  $email = mysqli_real_escape_string($conn,$_POST['email']);
-  $pass = mysqli_real_escape_string($conn,$_POST['password']);
-  $cpass = mysqli_real_escape_string($conn,$_POST['cpassword']);
+   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+   $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
 
   $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
